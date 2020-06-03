@@ -1,0 +1,11 @@
+.code {
+    background: #343a40;
+    color: #4dc0b5;
+    padding: 5px;
+    margin: 5px;
+    border-radius: 5px 0 5px 0
+}
+
+.link {
+    cursor: pointer;
+}
