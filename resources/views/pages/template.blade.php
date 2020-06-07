@@ -6,6 +6,7 @@
     <link rel="stylesheet" href="{{ URL::asset('assets/css/sb-admin.min.css') }}">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
+    <title>Transcripts</title>
 
     <script>
         $(document).ready(function () {
@@ -15,7 +16,7 @@
                 var gpt = $(this).text(); //alert(gpt)
 
                 if (gpt.length > 0) {
-                   total_gpt += parseFloat(gpt); //alert(total_gpt);
+                   total_gpt += parseFloat(gpt); //alert(total_gpt); total_gpt = total_gpt + parseFloat(gpt)
                 }
             });
             $(this).find("#gpt").html(total_gpt);

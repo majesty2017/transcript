@@ -35,7 +35,8 @@ class AdminDashboardController extends Controller
 //    getStudent method is responsible for student page at admin dashboard
     public function getStudent() {
         $students = User::all();
-        return view('admins.pages.student', compact('students'));
+        $totalAdmins = Admin::all()->count();
+        return view('admins.pages.student', compact('students', 'totalAdmins'));
     }
 
 //    createStudent method is responsible for creating new student page at admin dashboard
@@ -87,7 +88,8 @@ class AdminDashboardController extends Controller
     //    getHod method is responsible for hod page at admin dashboard
     public function getHod() {
         $hods = Hod::all();
-        return view('admins.pages.hod', compact('hods'));
+        $totalAdmins = Admin::all()->count();
+        return view('admins.pages.hod', compact('hods', 'totalAdmins'));
     }
 
     public function createHod(Request $request) {
@@ -133,7 +135,8 @@ class AdminDashboardController extends Controller
     //    getLecturer method is responsible for lecturer page at admin dashboard
     public function getLecturer() {
         $lecturers = Lecturer::all();
-       return view('admins.pages.lecturer', compact('lecturers'));
+        $totalAdmins = Admin::all()->count();
+       return view('admins.pages.lecturer', compact('lecturers', 'totalAdmins'));
     }
 
     public function createLecturer(Request $request) {
@@ -180,7 +183,8 @@ class AdminDashboardController extends Controller
     public function getResult() {
         $students = User::all();
         $results = Result::all();
-       return view('admins.pages.result', compact('students', 'results'));
+        $totalAdmins = Admin::all()->count();
+       return view('admins.pages.result', compact('students', 'results', 'totalAdmins'));
     }
 
     //    postResult method is responsible for posting new results page at admin dashboard

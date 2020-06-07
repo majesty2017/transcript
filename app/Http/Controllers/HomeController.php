@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Admin;
 use App\Result;
 use App\User;
 use App\Voucher;
@@ -29,7 +30,8 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('pages.home');
+        $totalAdmins = Admin::all()->count();
+        return view('pages.home', compact('totalAdmins'));
     }
 
     public function getApplyForTranscript() {
@@ -136,34 +138,40 @@ class HomeController extends Controller
         $year3 = Result::all()->where('student_id', $u_id)->where('year', 300);
 
 //        Year One
-        $total_credit_yr1_sem1 = DB::table('results')->where('student_id', $u_id)
+        $total_credit_yr1_sem1 = DB::table('results')
+            ->where('student_id', $u_id)
             ->where('year', 100)
             ->where('semester', 'One')
             ->sum('credit_hours');
 
-        $total_credit_yr1_sem2 = DB::table('results')->where('student_id', $u_id)
+        $total_credit_yr1_sem2 = DB::table('results')
+            ->where('student_id', $u_id)
             ->where('year', 100)
             ->where('semester', 'Two')
             ->sum('credit_hours');
 
         //        Year Two
-        $total_credit_yr2_sem1 = DB::table('results')->where('student_id', $u_id)
+        $total_credit_yr2_sem1 = DB::table('results')
+            ->where('student_id', $u_id)
             ->where('year', 200)
             ->where('semester', 'One')
             ->sum('credit_hours');
 
-        $total_credit_yr2_sem2 = DB::table('results')->where('student_id', $u_id)
+        $total_credit_yr2_sem2 = DB::table('results')
+            ->where('student_id', $u_id)
             ->where('year', 200)
             ->where('semester', 'Two')
             ->sum('credit_hours');
 
         //        Year three
-        $total_credit_yr3_sem1 = DB::table('results')->where('student_id', $u_id)
+        $total_credit_yr3_sem1 = DB::table('results')
+            ->where('student_id', $u_id)
             ->where('year', 300)
             ->where('semester', 'One')
             ->sum('credit_hours');
 
-        $total_credit_yr3_sem2 = DB::table('results')->where('student_id', $u_id)
+        $total_credit_yr3_sem2 = DB::table('results')
+            ->where('student_id', $u_id)
             ->where('year', 300)
             ->where('semester', 'Two')
             ->sum('credit_hours');

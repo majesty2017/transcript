@@ -19,6 +19,7 @@ class CreateVouchersTable extends Migration
             $table->string('voucher_code')->nullable();
             $table->double('amount')->nullable();
             $table->string('phone_number')->nullable();
+            $table->string('code_status')->nullable();
             $table->string('transaction_number')->nullable();
             $table->string('xref_id')->nullable();
             $table->string('transaction_token')->nullable();
