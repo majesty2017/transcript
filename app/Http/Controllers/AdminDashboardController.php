@@ -43,8 +43,8 @@ class AdminDashboardController extends Controller
     public function createStudent(Request $request) {
         $this->validate($request, [
             'name' => 'required|string|max:100',
-           'student_id' => 'required|unique:users|string|max:100',
-           'email' => 'required|email|unique:users',
+            'student_id' => 'required|unique:users|string|max:100',
+            'email' => 'required|email|unique:users',
             'password' => 'required|same:password_confirmation|min:6',
         ]);
 

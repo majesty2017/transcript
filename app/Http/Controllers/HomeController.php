@@ -10,6 +10,7 @@ use Bmatovu\MtnMomo\Products\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
+use LaravelQRCode\Facades\QRCode;
 
 class HomeController extends Controller
 {
@@ -130,51 +131,53 @@ class HomeController extends Controller
         $voucher = Voucher::where('id', $id)->get();
         $student = User::all()->where('id', $id)->first();
 
-        $u_id = Auth::user()->id;
         $levels = Result::all();
 
-        $year1 = Result::all()->where('student_id', $u_id)->where('year', 100);
-        $year2 = Result::all()->where('student_id', $u_id)->where('year', 200);
-        $year3 = Result::all()->where('student_id', $u_id)->where('year', 300);
+        $year1 = Result::all()->where('student_id', $id)->where('year', 100);
+        $year2 = Result::all()->where('student_id', $id)->where('year', 200);
+        $year3 = Result::all()->where('student_id', $id)->where('year', 300);
 
 //        Year One
         $total_credit_yr1_sem1 = DB::table('results')
-            ->where('student_id', $u_id)
+            ->where('student_id', $id)
             ->where('year', 100)
             ->where('semester', 'One')
             ->sum('credit_hours');
 
         $total_credit_yr1_sem2 = DB::table('results')
-            ->where('student_id', $u_id)
+            ->where('student_id', $id)
             ->where('year', 100)
             ->where('semester', 'Two')
             ->sum('credit_hours');
 
         //        Year Two
         $total_credit_yr2_sem1 = DB::table('results')
-            ->where('student_id', $u_id)
+            ->where('student_id', $id)
             ->where('year', 200)
             ->where('semester', 'One')
             ->sum('credit_hours');
 
         $total_credit_yr2_sem2 = DB::table('results')
-            ->where('student_id', $u_id)
+            ->where('student_id', $id)
             ->where('year', 200)
             ->where('semester', 'Two')
             ->sum('credit_hours');
 
         //        Year three
         $total_credit_yr3_sem1 = DB::table('results')
-            ->where('student_id', $u_id)
+            ->where('student_id', $id)
             ->where('year', 300)
             ->where('semester', 'One')
             ->sum('credit_hours');
 
         $total_credit_yr3_sem2 = DB::table('results')
-            ->where('student_id', $u_id)
+            ->where('student_id', $id)
             ->where('year', 300)
             ->where('semester', 'Two')
             ->sum('credit_hours');
+
+        $qrCode = QRCode::text($student)
+            ->png(); //dd($qrCode);
 
         return view('pages.template', compact('voucher',
             'total_credit_yr2_sem1',

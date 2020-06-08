@@ -29,13 +29,23 @@
                 @csrf
                 <div class="form-group">
                     <div class="form-label-group">
-                        <input type="text" id="student_id" class="form-control" name="student_id" value="{{ old('student_id') }}" placeholder="Student Id" autofocus="autofocus">
+                        @error('student_id')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                        <input type="text" id="student_id" class="form-control @error('student_id') is-invalid @enderror" name="student_id" value="{{ old('student_id') }}" placeholder="Student Id" autofocus="autofocus">
                         <label for="student_id">Student Id</label>
                     </div>
                 </div>
                 <div class="form-group">
                     <div class="form-label-group">
-                        <input type="password" id="inputPassword" class="form-control" name="password" placeholder="Password">
+                        @error('password')
+                        <span class="invalid-feedback" role="alert">
+                            <strong>{{ $message }}</strong>
+                        </span>
+                        @enderror
+                        <input type="password" id="inputPassword" class="form-control @error('password') is-invalid @enderror" name="password" placeholder="Password">
                         <label for="inputPassword">Password</label>
                     </div>
                 </div>
