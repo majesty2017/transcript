@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
@@ -16,6 +16,6 @@ class Voucher extends Model
     ];
 
     public function student() {
-        return $this->belongsTo('\App\User', 'student_id');
+        return $this->belongsTo(User::class, 'student_id');
     }
 }
