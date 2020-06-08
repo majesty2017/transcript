@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers\Lecturer;
 
-use App\Admin;
+use App\Models\Admin;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 

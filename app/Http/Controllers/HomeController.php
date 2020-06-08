@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Admin;
-use App\Result;
-use App\User;
-use App\Voucher;
+use App\Models\Admin;
+use App\Models\Result;
+use App\Models\User;
+use App\Models\Voucher;
 use Bmatovu\MtnMomo\Products\Collection;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;

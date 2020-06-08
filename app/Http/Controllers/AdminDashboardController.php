@@ -4,11 +4,11 @@
 namespace App\Http\Controllers;
 
 
-use App\Admin;
-use App\Hod;
-use App\Lecturer;
-use App\Result;
-use App\User;
+use App\Models\Admin;
+use App\Models\Hod;
+use App\Models\Lecturer;
+use App\Models\Result;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class AdminDashboardController extends Controller

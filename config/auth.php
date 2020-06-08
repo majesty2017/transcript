@@ -101,22 +101,22 @@ return [
     'providers' => [
         'users' => [
             'driver' => 'eloquent',
-            'model' => App\User::class,
+            'model' => App\models\User::class,
         ],
 
         'admins' => [
             'driver' => 'eloquent',
-            'model' => App\Admin::class,
+            'model' => App\models\Admin::class,
         ],
 
         'hods' => [
             'driver' => 'eloquent',
-            'model' => App\Hod::class,
+            'model' => App\models\Hod::class,
         ],
 
         'lecturers' => [
             'driver' => 'eloquent',
-            'model' => App\Lecturer::class,
+            'model' => App\models\Lecturer::class,
         ],
 
         // 'users' => [
