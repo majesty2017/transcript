@@ -176,9 +176,6 @@ class HomeController extends Controller
             ->where('semester', 'Two')
             ->sum('credit_hours');
 
-        $qrCode = QRCode::text($student)
-            ->png(); //dd($qrCode);
-
         return view('pages.template', compact('voucher',
             'total_credit_yr2_sem1',
             'total_credit_yr2_sem2',

@@ -10,6 +10,7 @@ use App\Models\Lecturer;
 use App\Models\Result;
 use App\Models\User;
 use Illuminate\Http\Request;
+use LaravelQRCode\Facades\QRCode;
 
 class AdminDashboardController extends Controller
 {
@@ -56,7 +57,15 @@ class AdminDashboardController extends Controller
         $student->password = bcrypt($request->input('password'));
 
         $student->save();
+        $file = 'assets/img/qrcodes/' . $student->id . '.png';
 
+        QRCode::text("".$student->student_id.", \n ".$student->name.", \n ".$student->programme.", \n ".$student->email."")
+            ->setSize(8)
+            ->setMargin(2)
+            ->setOutfile($file)
+            ->png();
+        $student->qr_code = $file;
+        User::where('id', $student->id)->update(['qr_code' => $student->qr_code]);
         return redirect()->back()->with('info', 'New student created successfully.');
     }
 
