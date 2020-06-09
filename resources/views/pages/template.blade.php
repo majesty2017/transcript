@@ -431,7 +431,7 @@
                 <img src="{{ URL::to('assets/img/letterhead.jpg')}}" style="height: auto">
             </div>
             <div class="col-md-3 mt-3 rounded">
-                <img src="{{ asset('assets/img/qrcodes/' . $student->id . '.png') }}" alt="" class="img-thumbnail">
+                <img src="{{ asset('assets/img/qrcodes/' . $student->student_id . '.png') }}" alt="" class="img-thumbnail">
             </div>
         </div>
         @if($year3)

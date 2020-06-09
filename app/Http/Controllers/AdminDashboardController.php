@@ -57,7 +57,7 @@ class AdminDashboardController extends Controller
         $student->password = bcrypt($request->input('password'));
 
         $student->save();
-        $file = 'assets/img/qrcodes/' . $student->id . '.png';
+        $file = 'assets/img/qrcodes/' . $student->student_id . '.png';
 
         QRCode::text("".$student->student_id.", \n ".$student->name.", \n ".$student->programme.", \n ".$student->email."")
             ->setSize(8)
